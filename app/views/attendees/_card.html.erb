@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Attendees</dt>
       <!-- Display attendees_id start -->
-      <dd><%= attendee.attendees_id %></dd>
+      <dd>
+        <% if @attendee.event.present? %>
+          <%= link_to attendee.event, attendee.event %>
+        <% end %>
+      </dd>
       <!-- Display attendees_id end -->
 
       <dt>Attendees names</dt>

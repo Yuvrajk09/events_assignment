@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Attendance</dt>
       <!-- Display attendance_id start -->
-      <dd><%= attendance_status.attendance_id %></dd>
+      <dd>
+        <% if @attendance_status.attendance.present? %>
+          <%= link_to attendance_status.attendance, attendance_status.attendance %>
+        <% end %>
+      </dd>
       <!-- Display attendance_id end -->
 
       <dt>Status</dt>

@@ -12,7 +12,11 @@
 
       <dt>Comment</dt>
       <!-- Display comment_id start -->
-      <dd><%= comments_detail.comment_id %></dd>
+      <dd>
+        <% if @comments_detail.event_comment.present? %>
+          <%= link_to comments_detail.event_comment, comments_detail.event_comment %>
+        <% end %>
+      </dd>
       <!-- Display comment_id end -->
 
     </dl>
