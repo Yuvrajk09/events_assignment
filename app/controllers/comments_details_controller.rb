@@ -24,7 +24,12 @@ class CommentsDetailsController < ApplicationController
     @comments_detail = CommentsDetail.new(comments_detail_params)
 
     if @comments_detail.save
-      redirect_to @comments_detail, notice: 'Comments detail was successfully created.'
+      message = 'CommentsDetail was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @comments_detail, notice: message
+      end
     else
       render :new
     end

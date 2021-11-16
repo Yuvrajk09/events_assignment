@@ -24,7 +24,12 @@ class HostDetailsController < ApplicationController
     @host_detail = HostDetail.new(host_detail_params)
 
     if @host_detail.save
-      redirect_to @host_detail, notice: 'Host detail was successfully created.'
+      message = 'HostDetail was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @host_detail, notice: message
+      end
     else
       render :new
     end

@@ -1,0 +1,22 @@
+<!-- Form attendee start -->
+<%= form_with(model: @attendee, local: true) do |f| %>
+<!-- Form attendee end -->
+
+  <!-- Label and input for attendees_id start -->
+  <!-- Input for attendees_id start -->
+  <%= f.hidden_field :attendees_id, value: @event_detail.id %>
+  <!-- Input for attendees_id end -->
+  <!-- Label and input for attendees_id end -->
+
+  <!-- Label and input for attendees_names start -->
+  <div class="form-group">
+    <%= f.label :attendees_names %>
+
+    <!-- Input for attendees_names start -->
+    <%= f.text_field :attendees_names, class: "form-control" %>
+    <!-- Input for attendees_names end -->
+  </div>
+  <!-- Label and input for attendees_names end -->
+
+  <%= f.submit "Create attendee", class: "btn btn-block btn-outline-secondary" %>
+<% end %>

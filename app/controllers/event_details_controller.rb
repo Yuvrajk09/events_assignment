@@ -8,6 +8,9 @@ class EventDetailsController < ApplicationController
 
   # GET /event_details/1
   def show
+    @host_detail = HostDetail.new
+    @attendee = Attendee.new
+    @comments_detail = CommentsDetail.new
   end
 
   # GET /event_details/new
@@ -24,7 +27,12 @@ class EventDetailsController < ApplicationController
     @event_detail = EventDetail.new(event_detail_params)
 
     if @event_detail.save
-      redirect_to @event_detail, notice: 'Event detail was successfully created.'
+      message = 'EventDetail was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @event_detail, notice: message
+      end
     else
       render :new
     end
