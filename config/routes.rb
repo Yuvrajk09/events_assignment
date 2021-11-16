@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "user_details#index"
   resources :attendees
   resources :attendance_statuses
   resources :comments_details
