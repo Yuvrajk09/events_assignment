@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendance_statuses
   resources :comments_details
   resources :host_details
   resources :event_details
