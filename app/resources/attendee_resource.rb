@@ -7,6 +7,9 @@ class AttendeeResource < ApplicationResource
 
   # Direct associations
 
+  has_one    :attendance_status,
+             foreign_key: :attendance_id
+
   belongs_to :event,
              resource: EventDetailResource,
              foreign_key: :attendees_id
