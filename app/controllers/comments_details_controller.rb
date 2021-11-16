@@ -1,25 +1,20 @@
 class CommentsDetailsController < ApplicationController
   before_action :set_comments_detail, only: %i[show edit update destroy]
 
-  # GET /comments_details
   def index
     @q = CommentsDetail.ransack(params[:q])
     @comments_details = @q.result(distinct: true).includes(:event_comment,
                                                            :user).page(params[:page]).per(10)
   end
 
-  # GET /comments_details/1
   def show; end
 
-  # GET /comments_details/new
   def new
     @comments_detail = CommentsDetail.new
   end
 
-  # GET /comments_details/1/edit
   def edit; end
 
-  # POST /comments_details
   def create
     @comments_detail = CommentsDetail.new(comments_detail_params)
 
@@ -35,7 +30,6 @@ class CommentsDetailsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments_details/1
   def update
     if @comments_detail.update(comments_detail_params)
       redirect_to @comments_detail,
@@ -45,7 +39,6 @@ class CommentsDetailsController < ApplicationController
     end
   end
 
-  # DELETE /comments_details/1
   def destroy
     @comments_detail.destroy
     message = "CommentsDetail was successfully deleted."
@@ -58,12 +51,10 @@ class CommentsDetailsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_comments_detail
     @comments_detail = CommentsDetail.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def comments_detail_params
     params.require(:comments_detail).permit(:comments, :comment_id)
   end
