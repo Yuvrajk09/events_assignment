@@ -1,0 +1,76 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Event Detail #<%= event_detail.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Event</dt>
+      <!-- Display event_id start -->
+      <dd><%= event_detail.event_id %></dd>
+      <!-- Display event_id end -->
+
+      <dt>Event name</dt>
+      <!-- Display event_name start -->
+      <dd><%= event_detail.event_name %></dd>
+      <!-- Display event_name end -->
+
+      <dt>Event startdate</dt>
+      <!-- Display event_startdate start -->
+      <dd><%= event_detail.event_startdate %></dd>
+      <!-- Display event_startdate end -->
+
+      <dt>Event start time</dt>
+      <!-- Display event_start_time start -->
+      <dd><%= event_detail.event_start_time %></dd>
+      <!-- Display event_start_time end -->
+
+      <dt>Event details</dt>
+      <!-- Display event_details start -->
+      <dd><%= event_detail.event_details %></dd>
+      <!-- Display event_details end -->
+
+      <dt>Event end date</dt>
+      <!-- Display event_end_date start -->
+      <dd><%= event_detail.event_end_date %></dd>
+      <!-- Display event_end_date end -->
+
+      <dt>Event end time</dt>
+      <!-- Display event_end_time start -->
+      <dd><%= event_detail.event_end_time %></dd>
+      <!-- Display event_end_time end -->
+
+      <dt>Event location</dt>
+      <!-- Display event_location start -->
+      <dd><%= event_detail.event_location %></dd>
+      <!-- Display event_location end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back event_detail, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link event_detail start -->
+      <div class="col">
+        <%= link_to edit_event_detail_url(event_detail), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link event_detail end -->
+
+      <!-- Delete link event_detail start -->
+      <div class="col">
+        <%= link_to event_detail, method: :delete, data: { confirm: "Do you really want to delete this event_detail?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link event_detail end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(event_detail.updated_at) %> ago
+  </div>
+</div>
