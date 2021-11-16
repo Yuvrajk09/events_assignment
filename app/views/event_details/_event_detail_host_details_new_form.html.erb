@@ -1,22 +1,12 @@
-<!-- Form host_detail start -->
 <%= form_with(model: @host_detail, local: true) do |f| %>
-<!-- Form host_detail end -->
 
-  <!-- Label and input for host_id start -->
-  <!-- Input for host_id start -->
   <%= f.hidden_field :host_id, value: @event_detail.id %>
-  <!-- Input for host_id end -->
-  <!-- Label and input for host_id end -->
 
-  <!-- Label and input for host_name start -->
   <div class="form-group">
     <%= f.label :host_name %>
 
-    <!-- Input for host_name start -->
     <%= f.text_field :host_name, class: "form-control" %>
-    <!-- Input for host_name end -->
   </div>
-  <!-- Label and input for host_name end -->
 
   <%= f.submit "Create host detail", class: "btn btn-block btn-outline-secondary" %>
 <% end %>

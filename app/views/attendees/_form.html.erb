@@ -1,7 +1,6 @@
 <% was_validated = attendee.errors.any? %>
 
 <%= form_with(model: attendee, local: true, novalidate: true, class: "mb-3") do |f| %>
-  <!-- Label and input for attendees_id start -->
   <div class="form-group">
     <% attendee_class = "form-control" %>
     <% attendee_was_invalid = attendee.errors.include?(:attendee) %>
@@ -15,9 +14,7 @@
     <% end %>
 
     <%= f.label :attendees_id %>
-    <!-- Input for attendees_id start -->
     <%= f.collection_select :attendees_id, EventDetail.all, :id, :to_s, {}, class: "form-control" %>
-    <!-- Input for attendees_id end -->
     <% if attendee_was_invalid %>
       <% attendee.errors.full_messages_for(:attendee).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -26,8 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for attendees_id end -->
-  <!-- Label and input for attendees_names start -->
   <div class="form-group">
     <% attendees_name_class = "form-control" %>
     <% attendees_name_was_invalid = attendee.errors.include?(:attendees_name) %>
@@ -41,9 +36,7 @@
     <% end %>
 
     <%= f.label :attendees_names %>
-    <!-- Input for attendees_names start -->
     <%= f.text_field :attendees_names, class: attendees_name_class, placeholder: "Enter attendees name" %>
-    <!-- Input for attendees_names end -->
     <% if attendees_name_was_invalid %>
       <% attendee.errors.full_messages_for(:attendees_name).each do |message| %>
         <div class="invalid-feedback d-flex">
@@ -52,6 +45,5 @@
       <% end %>
     <% end %>
   </div>
-  <!-- Label and input for attendees_names end -->
   <%= f.button class: "btn btn-outline-secondary btn-block" %>
 <% end %>

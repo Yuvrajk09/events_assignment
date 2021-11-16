@@ -6,18 +6,14 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Attendees</dt>
-      <!-- Display attendees_id start -->
       <dd>
         <% if @attendee.event.present? %>
           <%= link_to attendee.event, attendee.event %>
         <% end %>
       </dd>
-      <!-- Display attendees_id end -->
 
       <dt>Attendees names</dt>
-      <!-- Display attendees_names start -->
       <dd><%= attendee.attendees_names %></dd>
-      <!-- Display attendees_names end -->
 
     </dl>
 
@@ -26,21 +22,17 @@
         <%= link_to_show_or_back attendee, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link attendee start -->
       <div class="col">
         <%= link_to edit_attendee_url(attendee), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link attendee end -->
 
-      <!-- Delete link attendee start -->
       <div class="col">
         <%= link_to attendee, method: :delete, data: { confirm: "Do you really want to delete this attendee?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link attendee end -->
     </div>
   </div>
 

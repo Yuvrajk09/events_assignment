@@ -6,18 +6,14 @@
   <div class="card-body">
     <dl class="mb-1">
       <dt>Host</dt>
-      <!-- Display host_id start -->
       <dd>
         <% if @host_detail.host.present? %>
           <%= link_to host_detail.host, host_detail.host %>
         <% end %>
       </dd>
-      <!-- Display host_id end -->
 
       <dt>Host name</dt>
-      <!-- Display host_name start -->
       <dd><%= host_detail.host_name %></dd>
-      <!-- Display host_name end -->
 
     </dl>
 
@@ -26,21 +22,17 @@
         <%= link_to_show_or_back host_detail, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
       </div>
 
-      <!-- Edit link host_detail start -->
       <div class="col">
         <%= link_to edit_host_detail_url(host_detail), class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-edit"></i>
         <% end %>
       </div>
-      <!-- Edit link host_detail end -->
 
-      <!-- Delete link host_detail start -->
       <div class="col">
         <%= link_to host_detail, method: :delete, data: { confirm: "Do you really want to delete this host_detail?" }, class: "btn btn-block btn-outline-secondary" do %>
           <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
-      <!-- Delete link host_detail end -->
     </div>
   </div>
 
