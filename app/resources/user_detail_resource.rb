@@ -10,6 +10,10 @@ class UserDetailResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :events,
+             resource: EventDetailResource,
+             foreign_key: :event_id
+
   # Indirect associations
 
 end
