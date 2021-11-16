@@ -13,6 +13,9 @@ class EventDetailResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :comments_details,
+             foreign_key: :comment_id
+
   belongs_to :users,
              resource: UserDetailResource,
              foreign_key: :event_id

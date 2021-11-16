@@ -7,6 +7,10 @@ class CommentsDetailResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :event_comment,
+             resource: EventDetailResource,
+             foreign_key: :comment_id
+
   # Indirect associations
 
 end
