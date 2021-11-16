@@ -3,7 +3,8 @@ class AttendanceStatusesController < ApplicationController
 
   # GET /attendance_statuses
   def index
-    @attendance_statuses = AttendanceStatus.page(params[:page]).per(10)
+    @q = AttendanceStatus.ransack(params[:q])
+    @attendance_statuses = @q.result(:distinct => true).includes(:attendance).page(params[:page]).per(10)
   end
 
   # GET /attendance_statuses/1

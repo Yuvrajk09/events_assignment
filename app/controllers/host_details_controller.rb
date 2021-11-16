@@ -3,7 +3,8 @@ class HostDetailsController < ApplicationController
 
   # GET /host_details
   def index
-    @host_details = HostDetail.page(params[:page]).per(10)
+    @q = HostDetail.ransack(params[:q])
+    @host_details = @q.result(:distinct => true).includes(:host).page(params[:page]).per(10)
   end
 
   # GET /host_details/1
