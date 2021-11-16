@@ -1,0 +1,46 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Attendee #<%= attendee.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Attendees</dt>
+      <!-- Display attendees_id start -->
+      <dd><%= attendee.attendees_id %></dd>
+      <!-- Display attendees_id end -->
+
+      <dt>Attendees names</dt>
+      <!-- Display attendees_names start -->
+      <dd><%= attendee.attendees_names %></dd>
+      <!-- Display attendees_names end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back attendee, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link attendee start -->
+      <div class="col">
+        <%= link_to edit_attendee_url(attendee), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link attendee end -->
+
+      <!-- Delete link attendee start -->
+      <div class="col">
+        <%= link_to attendee, method: :delete, data: { confirm: "Do you really want to delete this attendee?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link attendee end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(attendee.updated_at) %> ago
+  </div>
+</div>
