@@ -16,7 +16,7 @@
 
     <%= f.label :attendees_id %>
     <!-- Input for attendees_id start -->
-    <%= f.number_field :attendees_id, class: attendee_class, placeholder: "Enter attendee" %>
+    <%= f.collection_select :attendees_id, EventDetail.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for attendees_id end -->
     <% if attendee_was_invalid %>
       <% attendee.errors.full_messages_for(:attendee).each do |message| %>
