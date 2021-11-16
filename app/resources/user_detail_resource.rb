@@ -23,5 +23,4 @@ class UserDetailResource < ApplicationResource
       end
     end
   end
-
 end

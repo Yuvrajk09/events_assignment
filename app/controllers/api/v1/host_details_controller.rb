@@ -13,7 +13,7 @@ class Api::V1::HostDetailsController < Api::V1::GraphitiController
     host_detail = HostDetailResource.build(params)
 
     if host_detail.save
-      render jsonapi: host_detail, status: 201
+      render jsonapi: host_detail, status: :created
     else
       render jsonapi_errors: host_detail
     end
@@ -33,7 +33,7 @@ class Api::V1::HostDetailsController < Api::V1::GraphitiController
     host_detail = HostDetailResource.find(params)
 
     if host_detail.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: host_detail
     end

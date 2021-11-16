@@ -13,7 +13,7 @@ class Api::V1::CommentsDetailsController < Api::V1::GraphitiController
     comments_detail = CommentsDetailResource.build(params)
 
     if comments_detail.save
-      render jsonapi: comments_detail, status: 201
+      render jsonapi: comments_detail, status: :created
     else
       render jsonapi_errors: comments_detail
     end
@@ -33,7 +33,7 @@ class Api::V1::CommentsDetailsController < Api::V1::GraphitiController
     comments_detail = CommentsDetailResource.find(params)
 
     if comments_detail.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: comments_detail
     end

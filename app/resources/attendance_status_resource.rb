@@ -11,5 +11,4 @@ class AttendanceStatusResource < ApplicationResource
              resource: AttendeeResource
 
   # Indirect associations
-
 end

@@ -15,5 +15,4 @@ class AttendeeResource < ApplicationResource
              foreign_key: :attendees_id
 
   # Indirect associations
-
 end

@@ -2,20 +2,20 @@ class EventDetail < ApplicationRecord
   # Direct associations
 
   has_many   :host_details,
-             :foreign_key => "host_id",
-             :dependent => :destroy
+             foreign_key: "host_id",
+             dependent: :destroy
 
   has_many   :attendees,
-             :foreign_key => "attendees_id",
-             :dependent => :destroy
+             foreign_key: "attendees_id",
+             dependent: :destroy
 
   has_many   :comments_details,
-             :foreign_key => "comment_id",
-             :dependent => :destroy
+             foreign_key: "comment_id",
+             dependent: :destroy
 
   belongs_to :users,
-             :class_name => "UserDetail",
-             :foreign_key => "event_id"
+             class_name: "UserDetail",
+             foreign_key: "event_id"
 
   # Indirect associations
 
@@ -26,5 +26,4 @@ class EventDetail < ApplicationRecord
   def to_s
     users.to_s
   end
-
 end

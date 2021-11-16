@@ -2,7 +2,7 @@ class AttendanceStatus < ApplicationRecord
   # Direct associations
 
   belongs_to :attendance,
-             :class_name => "Attendee"
+             class_name: "Attendee"
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class AttendanceStatus < ApplicationRecord
   def to_s
     attendance.to_s
   end
-
 end

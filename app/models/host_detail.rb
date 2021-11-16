@@ -2,7 +2,7 @@ class HostDetail < ApplicationRecord
   # Direct associations
 
   belongs_to :host,
-             :class_name => "EventDetail"
+             class_name: "EventDetail"
 
   # Indirect associations
 
@@ -13,5 +13,4 @@ class HostDetail < ApplicationRecord
   def to_s
     host.to_s
   end
-
 end

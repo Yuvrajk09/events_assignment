@@ -11,5 +11,4 @@ class HostDetailResource < ApplicationResource
              resource: EventDetailResource
 
   # Indirect associations
-
 end

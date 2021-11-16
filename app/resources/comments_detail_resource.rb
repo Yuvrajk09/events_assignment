@@ -18,7 +18,7 @@ class CommentsDetailResource < ApplicationResource
 
   filter :event_id, :integer do
     eq do |scope, value|
-      scope.eager_load(:user).where(:event_details => {:event_id => value})
+      scope.eager_load(:user).where(event_details: { event_id: value })
     end
   end
 end

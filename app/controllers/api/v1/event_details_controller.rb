@@ -13,7 +13,7 @@ class Api::V1::EventDetailsController < Api::V1::GraphitiController
     event_detail = EventDetailResource.build(params)
 
     if event_detail.save
-      render jsonapi: event_detail, status: 201
+      render jsonapi: event_detail, status: :created
     else
       render jsonapi_errors: event_detail
     end
@@ -33,7 +33,7 @@ class Api::V1::EventDetailsController < Api::V1::GraphitiController
     event_detail = EventDetailResource.find(params)
 
     if event_detail.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: event_detail
     end

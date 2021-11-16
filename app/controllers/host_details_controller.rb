@@ -1,15 +1,14 @@
 class HostDetailsController < ApplicationController
-  before_action :set_host_detail, only: [:show, :edit, :update, :destroy]
+  before_action :set_host_detail, only: %i[show edit update destroy]
 
   # GET /host_details
   def index
     @q = HostDetail.ransack(params[:q])
-    @host_details = @q.result(:distinct => true).includes(:host).page(params[:page]).per(10)
+    @host_details = @q.result(distinct: true).includes(:host).page(params[:page]).per(10)
   end
 
   # GET /host_details/1
-  def show
-  end
+  def show; end
 
   # GET /host_details/new
   def new
@@ -17,17 +16,16 @@ class HostDetailsController < ApplicationController
   end
 
   # GET /host_details/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /host_details
   def create
     @host_detail = HostDetail.new(host_detail_params)
 
     if @host_detail.save
-      message = 'HostDetail was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "HostDetail was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @host_detail, notice: message
       end
@@ -39,7 +37,7 @@ class HostDetailsController < ApplicationController
   # PATCH/PUT /host_details/1
   def update
     if @host_detail.update(host_detail_params)
-      redirect_to @host_detail, notice: 'Host detail was successfully updated.'
+      redirect_to @host_detail, notice: "Host detail was successfully updated."
     else
       render :edit
     end
@@ -49,22 +47,22 @@ class HostDetailsController < ApplicationController
   def destroy
     @host_detail.destroy
     message = "HostDetail was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to host_details_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_host_detail
-      @host_detail = HostDetail.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def host_detail_params
-      params.require(:host_detail).permit(:host_id, :host_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_host_detail
+    @host_detail = HostDetail.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def host_detail_params
+    params.require(:host_detail).permit(:host_id, :host_name)
+  end
 end
