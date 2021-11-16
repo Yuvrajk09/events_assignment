@@ -13,4 +13,12 @@ class CommentsDetailResource < ApplicationResource
 
   # Indirect associations
 
+  has_one    :user,
+             resource: UserDetailResource
+
+  filter :event_id, :integer do
+    eq do |scope, value|
+      scope.eager_load(:user).where(:event_details => {:event_id => value})
+    end
+  end
 end

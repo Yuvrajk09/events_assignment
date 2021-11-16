@@ -16,4 +16,12 @@ class UserDetailResource < ApplicationResource
 
   # Indirect associations
 
+  has_many :comments_details do
+    assign_each do |user_detail, comments_details|
+      comments_details.select do |c|
+        c.id.in?(user_detail.comments_details.map(&:id))
+      end
+    end
+  end
+
 end
