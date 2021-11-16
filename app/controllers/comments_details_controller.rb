@@ -3,7 +3,7 @@ class CommentsDetailsController < ApplicationController
 
   # GET /comments_details
   def index
-    @comments_details = CommentsDetail.all
+    @comments_details = CommentsDetail.page(params[:page]).per(10)
   end
 
   # GET /comments_details/1

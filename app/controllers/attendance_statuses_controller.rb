@@ -3,7 +3,7 @@ class AttendanceStatusesController < ApplicationController
 
   # GET /attendance_statuses
   def index
-    @attendance_statuses = AttendanceStatus.all
+    @attendance_statuses = AttendanceStatus.page(params[:page]).per(10)
   end
 
   # GET /attendance_statuses/1

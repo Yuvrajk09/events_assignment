@@ -3,7 +3,7 @@ class HostDetailsController < ApplicationController
 
   # GET /host_details
   def index
-    @host_details = HostDetail.all
+    @host_details = HostDetail.page(params[:page]).per(10)
   end
 
   # GET /host_details/1

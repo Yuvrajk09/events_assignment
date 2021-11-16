@@ -3,7 +3,7 @@ class EventDetailsController < ApplicationController
 
   # GET /event_details
   def index
-    @event_details = EventDetail.all
+    @event_details = EventDetail.page(params[:page]).per(10)
   end
 
   # GET /event_details/1
