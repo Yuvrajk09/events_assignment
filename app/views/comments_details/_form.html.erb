@@ -1,0 +1,57 @@
+<% was_validated = comments_detail.errors.any? %>
+
+<%= form_with(model: comments_detail, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for comments start -->
+  <div class="form-group">
+    <% comment_class = "form-control" %>
+    <% comment_was_invalid = comments_detail.errors.include?(:comment) %>
+
+    <% if was_validated %>
+      <% if comment_was_invalid %>
+        <% comment_class << " is-invalid" %>
+      <% else %>
+        <% comment_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :comments %>
+    <!-- Input for comments start -->
+    <%= f.text_field :comments, class: comment_class, placeholder: "Enter comment" %>
+    <!-- Input for comments end -->
+    <% if comment_was_invalid %>
+      <% comments_detail.errors.full_messages_for(:comment).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for comments end -->
+  <!-- Label and input for comment_id start -->
+  <div class="form-group">
+    <% comment_class = "form-control" %>
+    <% comment_was_invalid = comments_detail.errors.include?(:comment) %>
+
+    <% if was_validated %>
+      <% if comment_was_invalid %>
+        <% comment_class << " is-invalid" %>
+      <% else %>
+        <% comment_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :comment_id %>
+    <!-- Input for comment_id start -->
+    <%= f.number_field :comment_id, class: comment_class, placeholder: "Enter comment" %>
+    <!-- Input for comment_id end -->
+    <% if comment_was_invalid %>
+      <% comments_detail.errors.full_messages_for(:comment).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for comment_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
