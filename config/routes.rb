@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   root :to => "user_details#index"
   resources :attendees
   resources :attendance_statuses
