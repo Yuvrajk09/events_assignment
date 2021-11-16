@@ -1,5 +1,7 @@
 ActiveAdmin.register EventDetail do
 
+ permit_params :event_id, :event_name, :event_startdate, :event_start_time, :event_details, :event_end_date, :event_end_time, :event_location
+
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
