@@ -42,8 +42,14 @@ class HostDetailsController < ApplicationController
   # DELETE /host_details/1
   def destroy
     @host_detail.destroy
-    redirect_to host_details_url, notice: 'Host detail was successfully destroyed.'
+    message = "HostDetail was successfully deleted."
+    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referrer, notice: message
+    else
+      redirect_to host_details_url, notice: message
+    end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
