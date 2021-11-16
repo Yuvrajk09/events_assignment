@@ -1,6 +1,10 @@
 class EventDetail < ApplicationRecord
   # Direct associations
 
+  has_many   :host_details,
+             :foreign_key => "host_id",
+             :dependent => :destroy
+
   has_many   :attendees,
              :foreign_key => "attendees_id",
              :dependent => :destroy
