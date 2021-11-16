@@ -7,6 +7,9 @@ class HostDetailResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :host,
+             resource: EventDetailResource
+
   # Indirect associations
 
 end
