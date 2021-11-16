@@ -1,6 +1,10 @@
 class EventDetail < ApplicationRecord
   # Direct associations
 
+  has_many   :comments_details,
+             :foreign_key => "comment_id",
+             :dependent => :destroy
+
   belongs_to :users,
              :class_name => "UserDetail",
              :foreign_key => "event_id"
