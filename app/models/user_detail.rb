@@ -1,6 +1,11 @@
 class UserDetail < ApplicationRecord
   # Direct associations
 
+  has_many   :events,
+             :class_name => "EventDetail",
+             :foreign_key => "event_id",
+             :dependent => :destroy
+
   # Indirect associations
 
   # Validations
