@@ -1,0 +1,57 @@
+<% was_validated = host_detail.errors.any? %>
+
+<%= form_with(model: host_detail, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for host_id start -->
+  <div class="form-group">
+    <% host_class = "form-control" %>
+    <% host_was_invalid = host_detail.errors.include?(:host) %>
+
+    <% if was_validated %>
+      <% if host_was_invalid %>
+        <% host_class << " is-invalid" %>
+      <% else %>
+        <% host_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :host_id %>
+    <!-- Input for host_id start -->
+    <%= f.number_field :host_id, class: host_class, placeholder: "Enter host" %>
+    <!-- Input for host_id end -->
+    <% if host_was_invalid %>
+      <% host_detail.errors.full_messages_for(:host).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for host_id end -->
+  <!-- Label and input for host_name start -->
+  <div class="form-group">
+    <% host_name_class = "form-control" %>
+    <% host_name_was_invalid = host_detail.errors.include?(:host_name) %>
+
+    <% if was_validated %>
+      <% if host_name_was_invalid %>
+        <% host_name_class << " is-invalid" %>
+      <% else %>
+        <% host_name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :host_name %>
+    <!-- Input for host_name start -->
+    <%= f.text_field :host_name, class: host_name_class, placeholder: "Enter host name" %>
+    <!-- Input for host_name end -->
+    <% if host_name_was_invalid %>
+      <% host_detail.errors.full_messages_for(:host_name).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for host_name end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
