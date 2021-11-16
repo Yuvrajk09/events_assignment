@@ -10,6 +10,8 @@ RSpec.describe UserDetail, type: :model do
 
     describe "InDirect Associations" do
 
+    it { should have_many(:comments_details) }
+
     end
 
     describe "Validations" do

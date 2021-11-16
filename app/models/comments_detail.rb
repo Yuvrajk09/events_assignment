@@ -7,6 +7,10 @@ class CommentsDetail < ApplicationRecord
 
   # Indirect associations
 
+  has_one    :user,
+             :through => :event_comment,
+             :source => :users
+
   # Validations
 
   # Scopes

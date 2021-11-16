@@ -8,6 +8,10 @@ class UserDetail < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :comments_details,
+             :through => :events,
+             :source => :comments_details
+
   # Validations
 
   # Scopes
